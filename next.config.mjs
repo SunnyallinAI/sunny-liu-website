@@ -1,10 +1,5 @@
-import createMDX from '@next/mdx'
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Configure `pageExtensions` to include MDX files
-  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
-  // Optionally, add any other Next.js config below
   images: {
     remotePatterns: [
       {
@@ -36,12 +31,4 @@ const nextConfig = {
   },
 }
 
-const withMDX = createMDX({
-  // Add markdown plugins here, the most common are rehype-slug and remark-gfm
-  options: {
-    remarkPlugins: [],
-    rehypePlugins: [],
-  },
-})
-
-export default withMDX(nextConfig)
+export default nextConfig

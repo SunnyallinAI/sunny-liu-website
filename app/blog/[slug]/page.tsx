@@ -6,6 +6,7 @@ import Footer from '@/components/footer'
 import Link from 'next/link'
 import { Calendar, ArrowLeft } from 'lucide-react'
 import { MDXRemote } from 'next-mdx-remote/rsc'
+import { serializeMDX } from '@/lib/mdx'
 
 interface PageProps {
   params: {
@@ -42,6 +43,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   if (!post) notFound()
 
   const relatedPosts = await getRelatedPosts(post.slug, post.tags)
+  const serializedContent = await serializeMDX(post.content)
 
   return (
     <main className="min-h-screen bg-white text-slate-900">
