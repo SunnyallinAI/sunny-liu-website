@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { Calendar, ArrowRight } from 'lucide-react'
+import { Calendar, ArrowRight, Home } from 'lucide-react'
 import { getBlogPosts } from '@/lib/blog'
 import Navbar from '@/components/navbar'
 import Footer from '@/components/footer'
@@ -18,9 +18,18 @@ export default async function BlogPage() {
       <Navbar />
       <div className="max-w-7xl mx-auto px-6 lg:px-10 pt-24 pb-16">
         <div className="mb-12">
-          <h1 className="text-5xl lg:text-6xl font-semibold tracking-tight mb-4">
-            Blog
-          </h1>
+          <div className="flex items-center justify-between mb-4">
+            <h1 className="text-5xl lg:text-6xl font-semibold tracking-tight">
+              Blog
+            </h1>
+            <Link
+              href="/"
+              className="flex items-center gap-2 text-slate-600 hover:text-green-600 transition-colors text-sm font-medium"
+            >
+              <Home size={16} />
+              Back to Home
+            </Link>
+          </div>
           <p className="text-xl text-slate-600 max-w-2xl">
             Insights on growth marketing, AI, affiliate marketing, and digital strategy.
           </p>
