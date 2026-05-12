@@ -5,8 +5,6 @@ import Navbar from '@/components/navbar'
 import Footer from '@/components/footer'
 import Link from 'next/link'
 import { Calendar, ArrowLeft } from 'lucide-react'
-import { MDXRemote } from 'next-mdx-remote/rsc'
-import { serializeMDX } from '@/lib/mdx'
 
 interface PageProps {
   params: {
@@ -38,12 +36,56 @@ export async function generateStaticParams() {
   }))
 }
 
+// Simple MDX renderer for basic markdown support
+function SimpleMDXRenderer({ content }: { content: string }) {
+  // Convert basic markdown to HTML
+  const renderContent = (text: string) => {
+    // Convert headers
+    let html = text.replace(/^### (.*$)/gim, '<h3>$1</h3>')
+    html = html.replace(/^## (.*$)/gim, '<h2>$1</h2>')
+    html = html.replace(/^# (.*$)/gim, '<h1>$1</h1>')
+
+    // Convert bold
+    html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+
+    // Convert italic
+    html = html.replace(/\*(.*?)\*/g, '<em>$1</em>')
+
+    // Convert links
+    html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-green-600 hover:underline">$1</a>')
+
+    // Convert lists
+    html = html.replace(/^\- (.*$)/gim, '<li>$1</li>')
+    // Wrap consecutive li elements in ul
+    html = html.replace(/(<li>.*<\/li>)/g, '<ul>$1</ul>')
+
+    // Convert paragraphs
+    html = html.replace(/\n\n/g, '</p><p>')
+    html = '<p>' + html + '</p>'
+
+    // Clean up empty paragraphs
+    html = html.replace(/<p><\/p>/g, '')
+    html = html.replace(/<p><h/g, '<h')
+    html = html.replace(/<\/h([0-9])><\/p>/g, '</h$1>')
+    html = html.replace(/<p><ul>/g, '<ul>')
+    html = html.replace(/<\/ul><\/p>/g, '</ul>')
+
+    return html
+  }
+
+  return (
+    <div
+      dangerouslySetInnerHTML={{ __html: renderContent(content) }}
+      className="prose prose-lg max-w-none"
+    />
+  )
+}
+
 export default async function BlogPostPage({ params }: PageProps) {
   const post = await getBlogPostBySlug(params.slug)
   if (!post) notFound()
 
   const relatedPosts = await getRelatedPosts(post.slug, post.tags)
-  const serializedContent = await serializeMDX(post.content)
 
   return (
     <main className="min-h-screen bg-white text-slate-900">
@@ -85,9 +127,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           </div>
         </header>
 
-        <div className="prose prose-lg max-w-none">
-          <MDXRemote source={post.content} />
-        </div>
+        <SimpleMDXRenderer content={post.content} />
 
         {relatedPosts.length > 0 && (
           <section className="mt-16 pt-8 border-t border-slate-200">

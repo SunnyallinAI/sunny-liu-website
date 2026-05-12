@@ -1,10 +1,6 @@
-import { serialize } from 'next-mdx-remote/serialize'
-import remarkGfm from 'remark-gfm'
+// MDX serialization is now handled directly in the blog page component
+// This file is kept for potential future use
 
 export async function serializeMDX(source: string) {
-  return await serialize(source, {
-    mdxOptions: {
-      remarkPlugins: [remarkGfm],
-    },
-  })
+  return source
 }
