@@ -56,9 +56,13 @@ export default function Projects() {
               className="group bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300"
             >
               <div className="relative h-48 bg-gradient-to-br from-green-100 to-emerald-50 overflow-hidden">
-                <div className="absolute inset-0 flex items-center justify-center text-slate-400">
-                  <span className="text-sm">{project.title}</span>
-                </div>
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-2 group-hover:text-green-600 transition-colors">

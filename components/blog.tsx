@@ -1,5 +1,6 @@
 import { Calendar, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { getBlogPosts } from '@/lib/blog'
 
 export default async function Blog() {
@@ -33,14 +34,18 @@ export default async function Blog() {
               <Link href={`/blog/${post.slug}`}>
                 <div className="relative h-48 bg-gradient-to-br from-green-100 to-emerald-50 overflow-hidden">
                   {post.image ? (
-                    <div className="absolute inset-0 flex items-center justify-center text-slate-400">
-                      <span className="text-sm">{post.title}</span>
-                    </div>
+                    <Image
+                      src={post.image}
+                      alt={post.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
                   ) : (
                     <div className="absolute inset-0 flex items-center justify-center">
                       <span className="text-4xl">📝</span>
                     </div>
                   )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
                 </div>
                 <div className="p-6">
                   <div className="flex items-center gap-3 text-sm text-slate-500 mb-3">
