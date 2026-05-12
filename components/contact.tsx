@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { useState } from 'react'
-import { Send, Loader2, CheckCircle } from 'lucide-react'
+import { Send, Loader2, CheckCircle, Mail, ChevronDown, ChevronUp } from 'lucide-react'
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -11,6 +11,7 @@ export default function Contact() {
     message: '',
   })
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const [showEmail, setShowEmail] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -61,24 +62,26 @@ export default function Contact() {
             </p>
 
             <div className="space-y-4">
-              <div className="flex items-center gap-3 text-slate-600">
+              <button
+                onClick={() => setShowEmail(!showEmail)}
+                className="flex items-center gap-3 text-slate-600 hover:text-green-600 transition-colors cursor-pointer"
+              >
                 <span className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-600">
-                  ✉️
+                  <Mail size={18} />
                 </span>
-                <span>liuchang1324@163.com</span>
-              </div>
-              <div className="flex items-center gap-3 text-slate-600">
-                <span className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-600">
-                  📞
+                <span className="flex items-center gap-2">
+                  {showEmail ? 'sunnyliu1911@gmail.com' : 'Click to show email'}
+                  {showEmail ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
                 </span>
-                <span>+86 18501131911</span>
-              </div>
-              <div className="flex items-center gap-3 text-slate-600">
-                <span className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-600">
-                  📍
-                </span>
-                <span>Beijing & Tianjin, China</span>
-              </div>
+              </button>
+              {showEmail && (
+                <a
+                  href="mailto:sunnyliu1911@gmail.com"
+                  className="block text-green-600 hover:text-green-700 transition-colors ml-13"
+                >
+                  sunnyliu1911@gmail.com
+                </a>
+              )}
             </div>
           </div>
 
