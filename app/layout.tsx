@@ -10,25 +10,25 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: 'SUNNY LIU | Global Growth Strategist',
   description:
-    'Global Growth Strategist specializing in Affiliate Marketing, AdTech, Gaming Growth, and International Partnerships.',
-  metadataBase: new URL('https://sunnyliu.com'),
+    'Global Growth Strategist specializing in Affiliate Marketing, AdTech, Gaming Growth, and International Partnerships. 10+ years scaling publisher networks and driving $36M+ revenue.',
+  metadataBase: new URL('https://www.hellosunny.site'),
   openGraph: {
-    title: 'SUNNY LIU',
-    description: 'AI-Era Global Growth Strategist',
+    title: 'SUNNY LIU | Global Growth Strategist',
+    description: 'AI-Era Global Growth Strategist with 10+ years experience in affiliate marketing, AdTech, and gaming growth across APAC markets.',
     images: ['/og-image.jpg'],
-    url: 'https://sunnyliu.com',
-    siteName: 'Sunny Liu',
+    url: 'https://www.hellosunny.site',
+    siteName: 'Sunny Liu - Growth Strategist',
     type: 'website',
     locale: 'en_US',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'SUNNY LIU | Global Growth Strategist',
-    description: 'AI-Era Global Growth Strategist',
+    description: 'AI-Era Global Growth Strategist with 10+ years experience in affiliate marketing and APAC growth.',
     images: ['/og-image.jpg'],
   },
   alternates: {
-    canonical: 'https://sunnyliu.com',
+    canonical: 'https://www.hellosunny.site',
   },
   robots: {
     index: true,

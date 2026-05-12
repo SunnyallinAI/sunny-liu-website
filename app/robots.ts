@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/api/', '/admin/'],
     },
-    sitemap: 'https://sunnyliu.com/sitemap.xml',
+    sitemap: 'https://www.hellosunny.site/sitemap.xml',
   }
 }

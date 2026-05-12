@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next'
 import { getBlogPosts } from '@/lib/blog'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://sunnyliu.com'
+  const baseUrl = 'https://www.hellosunny.site'
   const posts = await getBlogPosts()
 
   return [
