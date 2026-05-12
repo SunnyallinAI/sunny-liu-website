@@ -18,7 +18,7 @@ export default async function BlogPage() {
       <Navbar />
       <div className="max-w-7xl mx-auto px-6 lg:px-10 pt-24 pb-16">
         <div className="mb-12">
-          <h1 className="text-4xl lg:text-5xl font-semibold tracking-tight mb-4">
+          <h1 className="text-5xl lg:text-6xl font-semibold tracking-tight mb-4">
             Blog
           </h1>
           <p className="text-xl text-slate-600 max-w-2xl">

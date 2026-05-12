@@ -58,7 +58,7 @@ export default async function Blog() {
                       })}
                     </span>
                   </div>
-                  <h3 className="text-lg font-semibold mb-2 group-hover:text-green-600 transition-colors line-clamp-2">
+                  <h3 className="text-xl font-semibold mb-2 group-hover:text-green-600 transition-colors line-clamp-2">
                     {post.title}
                   </h3>
                   <p className="text-slate-600 text-sm mb-4 line-clamp-2">

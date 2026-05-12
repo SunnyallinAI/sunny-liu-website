@@ -74,14 +74,6 @@ export default function Contact() {
                   {showEmail ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
                 </span>
               </button>
-              {showEmail && (
-                <a
-                  href="mailto:sunnyliu1911@gmail.com"
-                  className="block text-green-600 hover:text-green-700 transition-colors ml-13"
-                >
-                  sunnyliu1911@gmail.com
-                </a>
-              )}
             </div>
           </div>
 

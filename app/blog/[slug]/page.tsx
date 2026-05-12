@@ -112,7 +112,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             <span>•</span>
             <span>{post.author}</span>
           </div>
-          <h1 className="text-4xl lg:text-5xl font-semibold tracking-tight mb-6">
+          <h1 className="text-5xl lg:text-6xl font-semibold tracking-tight mb-6">
             {post.title}
           </h1>
           <div className="flex flex-wrap gap-2">
